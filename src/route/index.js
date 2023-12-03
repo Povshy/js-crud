@@ -81,10 +81,25 @@ class Product {
     const product = this.getById(id)
 
     if (product) {
-      this.update(product, data)
+      this.updateProduct(product, data)
       return true
     } else {
       return false
+    }
+  }
+
+  static updateProduct = (
+    product,
+    { name, price, description },
+  ) => {
+    if (name) {
+      product.name = name
+    }
+    if (price) {
+      product.price = price
+    }
+    if (description) {
+      product.description = description
     }
   }
 
@@ -158,6 +173,41 @@ router.get('/product-edit', function (req, res) {
   res.render('product-edit', {
     style: 'product-edit',
     product,
+  })
+})
+
+// ================================================================
+
+router.post('/product-edit', function (req, res) {
+  const { name, price, description, id } = req.body
+
+  let result = false
+
+  const product = Product.getById(Number(id))
+
+  if (product) {
+    Product.updateProduct(product, {
+      name,
+      price,
+      description,
+    })
+    result = true
+  }
+
+  res.render('alert', {
+    style: 'alert',
+    info: result ? 'Товар оновлений' : 'Сталася помилка',
+  })
+})
+// ================================================================
+router.get('/product-delete', function (req, res) {
+  const { id } = req.query
+
+  Product.deleteById(Number(id))
+
+  res.render('alert', {
+    style: 'alert',
+    info: 'Товар видалений',
   })
 })
 // ================================================================
