@@ -1,34 +1,8 @@
 <main>
   <h1 class="title">Список товарів</h1>
 
-  <div class="form">
-
-    {{#with data.products}}
-    {{#if isEmpty}}
-    <mark>Пустий</mark>
-    {{else}}
-    {{#each list}}
-    <section class="form__content">
-
-
-      <h2 class="form__title">{{name}}</h2>
-      <div class="form__description">{{description}}</div>
-      <p class="form__id">ID:{{id}}</p>
-      <div class="form__row">
-        <div class="form__title">{{price}}₴</div>
-        <a href="/product-edit?id={{id}}">Редагувати</a>
-      </div>
-
-
-    </section>
-    {{/each}}
-    {{/if}}
-    {{/with}}
-
+  <div>
+    {{>product-card}}
   </div>
-
-
-
-
 
 </main>
