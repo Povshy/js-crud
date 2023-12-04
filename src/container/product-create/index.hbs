@@ -1,0 +1,35 @@
+{{!
+Це код container файлу для index сторінки,
+в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
+}}
+<main>
+  <section>
+    <h1 class="title">Створення товару</h1>
+    <div class="form">
+
+      <form method="POST" action="/product-create">
+        <div class="form__content">
+          <h2 class="form__title">Інформація про товар</h2>
+          <div class="form__row">
+            <div class="form__field1">
+              <label for="name" class="form__name">Назва товару</label>
+              <input type="text" name="name" class="form__input">
+            </div>
+            <div class="form__field1">
+              <label for="price" class="form__label">Ціна:</label>
+              <input type="number" name="price" class="form__input">
+            </div>
+          </div>
+
+          <div class="form__field">
+            <label for="description" class="form__label">Короткий опис товару:</label>
+            <input type="text" name="description" class="form__input">
+          </div>
+          <button class="form__button">Створити товар</button>
+
+        </div>
+      </form>
+    </div>
+  </section>
+
+</main>
