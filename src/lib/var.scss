@@ -7,3 +7,14 @@ $colorMap: (
 @function color ($key) {
     @return map-get($colorMap, $key)
 }
+
+.page {
+    display: flex;
+    justify-content: center;
+    max-height: 5000px;
+    height: 100%;
+    
+
+    background: linear-gradient(127deg, #C4E9F5 0%, #816DFA 107.64%);
+    padding: 0 15px;
+}

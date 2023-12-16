@@ -1,32 +1,23 @@
-{{!
-Це код container файлу для index сторінки,
-в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
-}}
-<main class="main">
-  {{> heading title='Мої замовлення' info="Список товаів"}}
+<div class="page">
+  <main class="main">
+    {{> heading title='Мої замовлення' info="Список товаів"}}
 
-  <div class="product-list">
-    {{#each data.list}}
-    <form method="GET" action="/purchase-info?id={{id}}"></form>
-    <div class="product-items">
-      <div class="item">ID: {{product.id}}</div>
-      <div class="item">Товар: {{product.title}} ({{amount}} шт.)</div>
-      <div class="item">Ціна: {{productPrice}} грн</div>
-      <div class="item">Нараховано: {{bonus}} грн</div>
-      <a href="/purchase-info?id={{id}}" class="button">Інформація</a>
+    <div class="product-list">
+      {{#each data.list}}
+      <form method="GET" action="/purchase-info?id={{id}}"></form>
+      <div class="product-items">
+        <div class="item">ID: {{product.id}}</div>
+        <div class="item">Товар: {{product.title}} ({{amount}} шт.)</div>
+        <div class="item">Ціна: {{productPrice}} грн</div>
+        <div class="item">Нараховано: {{bonus}} грн</div>
+        <a href="/purchase-info?id={{id}}" class="button">Інформація</a>
+      </div>
+      </form>
+      {{>divider}}
+      {{/each}}
     </div>
-    </form>
-    {{>divider}}
-    {{/each}}
-  </div>
+    <a href="/">Повернутися до каталогу товарів</a>
 
-</main>
+  </main>
 
-
-
-{{!
-Цей код містить лише те, що буде виводитись в
-
-<body>
-  Адже наш layout/default.hbs має вже структуру HTML
-  }}
+</div>

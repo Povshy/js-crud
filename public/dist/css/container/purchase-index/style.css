@@ -1,3 +1,12 @@
+.page {
+  display: flex;
+  justify-content: center;
+  max-height: 5000px;
+  height: 100%;
+  background: linear-gradient(127deg, #C4E9F5 0%, #816DFA 107.64%);
+  padding: 0 15px;
+}
+
 .heading {
   display: flex;
   flex-direction: column;
@@ -21,6 +30,7 @@
   padding: 16px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: flex-start;
   gap: 12px;
   background: rgb(248, 246, 246);
@@ -61,7 +71,8 @@
 }
 
 .product-card__button {
-  background-color: rgb(41, 41, 105);
+  background-color: rgb(60, 60, 163);
+  text-decoration: none;
   color: white;
   border: none;
   border-radius: 5px;
@@ -69,6 +80,8 @@
   font-size: 16px;
   cursor: pointer;
   transition: opacity 0.3s ease;
+  align-self: stretch;
+  text-align: center;
 }
 .product-card__button:hover {
   opacity: 0.7;
