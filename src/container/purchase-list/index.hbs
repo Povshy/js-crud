@@ -7,13 +7,15 @@
 
   <div class="product-list">
     {{#each data.list}}
+    <form method="GET" action="/purchase-info?id={{id}}"></form>
     <div class="product-items">
       <div class="item">ID: {{product.id}}</div>
       <div class="item">Товар: {{product.title}} ({{amount}} шт.)</div>
       <div class="item">Ціна: {{productPrice}} грн</div>
       <div class="item">Нараховано: {{bonus}} грн</div>
-
+      <a href="/purchase-info?id={{id}}" class="button">Інформація</a>
     </div>
+    </form>
     {{>divider}}
     {{/each}}
   </div>

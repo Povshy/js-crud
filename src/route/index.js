@@ -459,6 +459,49 @@ router.get('/purchase-list', function (req, res) {
   })
   // ↑↑ сюди вводимо JSON дані
 })
+// ================================================================
+// ================================================================
+
+router.get('/purchase-info', function (req, res) {
+  // res.render генерує нам HTML сторінку
+  const id = Number(req.query.id)
+
+  // ↙️ cюди вводимо назву файлу з сontainer
+  res.render('purchase-info', {
+    // вказуємо назву папки контейнера, в якій знаходяться наші стилі
+    style: 'purchase-info',
+
+    data: {
+      purchase: Purchase.getById(id),
+    },
+  })
+  // ↑↑ сюди вводимо JSON дані
+})
+
+// ================================================================
+router.post('/purchase-update', function (req, res) {
+  // res.render генерує нам HTML сторінку
+  const id = Number(req.query.id)
+  let { firstname, lastname, email, phone } = req.body
+
+  Purchase.updateById(id, {
+    firstname,
+    lastname,
+    email,
+    phone,
+  })
+
+  // ↙️ cюди вводимо назву файлу з сontainer
+  res.render('purchase-update', {
+    // вказуємо назву папки контейнера, в якій знаходяться наші стилі
+    style: 'purchase-update',
+
+    data: {
+      purchase: Purchase.getById(id),
+    },
+  })
+  // ↑↑ сюди вводимо JSON дані
+})
 
 // ================================================================
 
