@@ -173,4 +173,15 @@
   text-decoration: underline;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.comment .field__input {
+  height: 60px;
+}
+
 /*# sourceMappingURL=style.css.map */

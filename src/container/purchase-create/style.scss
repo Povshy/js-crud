@@ -51,3 +51,14 @@
     color: rgb(55, 55, 116);
     text-decoration: underline;
 }
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: s.space(10);
+}
+
+.comment .field__input {
+    height: 60px;
+}
