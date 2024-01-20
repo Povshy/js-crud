@@ -82,6 +82,37 @@ Product.add(
   29499,
   10,
 )
+// -------------
+Product.add(
+  'https://picsum.photos/200/300',
+  'Компьютер COBRA Advanced (A55.16.H1S4.36.16983)',
+  'AMD Ryzen 5 5500/ DDR4 16ГБ / HDD 1ТБ + SSD 480ГБ / nVidia GeForce RTX 3060 12ГБ',
+  [
+    { id: 1, text: 'Готовий до відправки' },
+    { id: 2, text: 'Топ продажів' },
+  ],
+  16049,
+  10,
+)
+
+Product.add(
+  'https://picsum.photos/200/300',
+  'Компьютер ARTLINE Gaming X47 (X47v45)',
+  'AMD Ryzen 5 5500/ DDR4 16ГБ / HDD 1ТБ + SSD 480ГБ / nVidia GeForce RTX 3060 12ГБ',
+  [{ id: 2, text: 'Топ продажів' }],
+  24000,
+  10,
+)
+
+Product.add(
+  'https://picsum.photos/200/300',
+  'Моноблок Lenovo IdeaCentre 3 27IAP7 (F0GJ00Q9UO) Black',
+  'AMD Ryzen 5 5500/ DDR4 16ГБ / HDD 1ТБ + SSD 480ГБ / nVidia GeForce RTX 3060 12ГБ',
+  [{ id: 1, text: 'Готовий до відправки' }],
+  19499,
+  10,
+)
+// -------------
 
 class Purchase {
   static DELIVERY_PRICE = 150
