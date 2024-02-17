@@ -28,37 +28,37 @@ class Track {
 Track.create(
   'Plyama kosmosu',
   'Valkinos',
-  '/https://picsum.photos/100/100',
+  'https://picsum.photos/100/100',
 )
 
 Track.create(
   'Okean Plazmu',
   'Korova kakala',
-  '/https://picsum.photos/100/100',
+  'https://picsum.photos/100/100',
 )
 
 Track.create(
   'Tartar',
   'Ponad edgarpid',
-  '/https://picsum.photos/100/100',
+  'https://picsum.photos/100/100',
 )
 
 Track.create(
   'Bylo',
   'Nasho',
-  '/https://picsum.photos/100/100',
+  'https://picsum.photos/100/100',
 )
 
 Track.create(
   'Karavan',
   'Zamok chu zamok',
-  '/https://picsum.photos/100/100',
+  'https://picsum.photos/100/100',
 )
 
 Track.create(
   'Pino-coka',
   'Parad vechirok',
-  '/https://picsum.photos/100/100',
+  'https://picsum.photos/100/100',
 )
 
 console.log(Track.getList())
@@ -69,7 +69,7 @@ class Playlist {
   constructor(name) {
     this.id = Math.floor(1000 + Math.random() * 9000)
     this.name = name
-    this.track = []
+    this.tracks = []
   }
 
   static create(name) {
@@ -90,6 +90,20 @@ class Playlist {
       .slice(0, 3)
 
     playlist.tracks.push(...randomTracks)
+  }
+
+  static getById(id) {
+    return (
+      Playlist.#list.find(
+        (playlist) => playlist.id === id,
+      ) || null
+    )
+  }
+
+  deleteTrackById(trackId) {
+    this.tracks = this.tracks.filter(
+      (track) => track.id !== trackId,
+    )
   }
 }
 // ================================================================
@@ -151,10 +165,91 @@ router.post('/spotify-create', function (req, res) {
 
   console.log(playlist)
 
-  res.render('spotify-create', {
-    style: 'spotify-create',
+  res.render('spotify-playlist', {
+    style: 'spotify-playlist',
 
-    data: {},
+    data: {
+      playlistId: playlist.id,
+      tracks: playlist.tracks,
+      name: playlist.name,
+    },
+  })
+})
+// =====================
+
+router.get('/spotify-playlist', function (req, res) {
+  const id = Number(req.query.id)
+
+  const playlist = Playlist.getById(id)
+
+  if (!playlist) {
+    return res.render('alert', {
+      style: 'alert',
+
+      data: {
+        message: 'Помилка',
+        info: 'Такого плейліста не знайдено',
+        link: `/`,
+      },
+    })
+  }
+
+  res.render('spotify-playlist', {
+    style: 'spotify-playlist',
+
+    data: {
+      playlistId: playlist.id,
+      tracks: playlist.tracks,
+      name: playlist.name,
+    },
+  })
+})
+// =====================
+
+router.get('/spotify-track-delete', function (req, res) {
+  const playlistId = Number(req.query.playlistId)
+  const trackId = Number(req.query.trackId)
+
+  const playlist = Playlist.getById(playlistId)
+
+  if (!playlist) {
+    return res.render('alert', {
+      style: 'alert',
+
+      data: {
+        message: 'Помилка',
+        info: 'Такого плейліста не знайдено',
+        link: `/spotify-playlist?id=${playlistId}`,
+      },
+    })
+  }
+
+  playlist.deleteTrackById(trackId)
+
+  res.render('spotify-playlist', {
+    style: 'spotify-playlist',
+
+    data: {
+      playlistId: playlist.id,
+      tracks: playlist.tracks,
+      name: playlist.name,
+    },
+  })
+})
+// ==========================
+router.get('/spotify-playlist-add', function (req, res) {
+  const playlistId = Number(req.query.playlistId)
+  const trackId = Number(req.query.trackId)
+
+  const playlist = Playlist.getById(playlistId)
+
+  res.render('spotify-playlist-add', {
+    style: 'spotify-playlist-add',
+
+    data: {
+      playlistId: playlist.id,
+      tracks: Track.getList(),
+    },
   })
 })
 
