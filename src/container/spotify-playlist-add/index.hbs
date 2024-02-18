@@ -1,7 +1,7 @@
 <main class="main">
   {{#with data}}
   <div class="main__content">
-    <h1 class="title title--center">{{name}}</h1>
+    <h1 class="title title--center">Додати до плейліста</h1>
 
 
     <ul class="track__list">
@@ -13,7 +13,7 @@
           <em class="track__author">{{author}}</em>
         </div>
 
-        <a href="/spotify-track-add?playlistId={{playlistId}}&trackId={{id}}">
+        <a href="/spotify-track-add?playlistId={{../playlistId}}&trackId={{id}}">
           <img src="/svg/add_track.svg">
         </a>
 

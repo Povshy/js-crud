@@ -58,4 +58,38 @@ a {
         font-size: 24px;
         color: s.color(light);
     }
+
+    &__author {
+        font-size: 16px;
+        color: s.color(gray);
+    }
+}
+// =======
+.playlist {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: s.space(7);
+    align-items: center;
+
+    &__list {
+        display: grid;
+        gap: s.space(7);
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: s.space(2);
+    }
+
+    &__name {
+        font-size: 24px;
+        color: s.color(light);
+    }
+
+    &__amount {
+        font-size: 16px;
+        color: s.color(gray);
+    }
 }

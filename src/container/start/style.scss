@@ -1,0 +1,8 @@
+@use '../../lib/service.scss' as s;
+
+@use '../../lib/spotify.scss' as spotify;
+
+.label {
+    display: flex;
+    justify-content: space-between;
+}
